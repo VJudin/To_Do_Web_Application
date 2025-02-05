@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TODO</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.min.css">
+  </head>
+  <body>
+    <div class="container">
+        <h1>Have a wonderful and productive day :3</h1>
+        <form method="POST" action="/todos">
+        <label for="todo">Add a new To-Do to your To-Do-list:</label>
+        <input type="text" id="todo" name="todo" /><br/>
+        <input type="submit" value="Add" />
+        </form>
+        <h2>Existing todos:</h2>
+        <ul style="list-style-type:none;">
+        <% it.todos.forEach((todo) => { %>
+        <li>
+            <div class="checkbox">
+                <label> <input type="checkbox" value=""> <a href="/todos/<%= todo.id %>"><%= todo.todo %></a></label>
+            </div>
+            <form method="POST" action="/todos/<%= todo.id %>/delete">
+            <input type="submit" value="Delete" />
+            </form>
+        </li>
+        <% }); %>
+        </ul>
+    </div>
+  </body>
+</html>
